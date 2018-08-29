@@ -134,7 +134,7 @@ class KlistUtil {
                     print(displayNameString)
                     let lifetime = GSSCredentialGetLifetime(cred!)
                     let expiretime = Date().addingTimeInterval(TimeInterval(lifetime))
-                    print(self.tickets[displayNameString])
+                    //print(self.tickets[displayNameString])
                     self.tickets[displayNameString]?.expired = false
                     self.tickets[displayNameString]?.expires = expiretime
                     self.tickets[displayNameString]?.GSSItem = cred
