@@ -23,7 +23,6 @@
 		1AB3EF051FB688E6002D5F99 /* DNSResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF031FB688E6002D5F99 /* DNSResolver.m */; };
 		1AB3EF071FB68904002D5F99 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF061FB68904002D5F99 /* UserRecord.swift */; };
 		1AB3EF091FB68922002D5F99 /* NoMADSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF081FB68922002D5F99 /* NoMADSession.swift */; };
-		1AB3EF5E1FB6962A002D5F99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A10FCCD1FAEA7B300D30727 /* Info.plist */; };
 		1AB3EF5F1FB69637002D5F99 /* GSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF351FB68C18002D5F99 /* GSS.framework */; };
 		1AB3EF601FB6963B002D5F99 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF361FB68F37002D5F99 /* libresolv.tbd */; };
 		1AB3EF611FB6963D002D5F99 /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF341FB68BC4002D5F99 /* Kerberos.framework */; };
@@ -323,7 +322,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AB3EF5E1FB6962A002D5F99 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
