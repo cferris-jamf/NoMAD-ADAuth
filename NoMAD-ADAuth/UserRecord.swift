@@ -6,9 +6,7 @@
 //  Copyright © 2018 Orchard & Grove Inc. All rights reserved.
 //
 
-import Foundation
-
-public protocol NoMADUserRecord {
+public protocol BasicUserInfo {
     var firstName: String { get }
     var lastName: String { get }
     var fullName: String { get }
@@ -19,13 +17,12 @@ public protocol NoMADUserRecord {
     var homeDirectory: String? { get }
     var passwordSet: Date { get }
     var passwordExpire: Date? { get }
-    var uacFlags: Int? { get }
 }
 
-public struct ADUserRecord: NoMADUserRecord, Equatable {
+public struct ADUserRecord: BasicUserInfo, Equatable {
     
-    public let type : LDAPType = .AD
-    public var userPrincipal : String
+    public let type: LDAPType = .AD
+    public var userPrincipal: String
     public var firstName: String
     public var lastName: String
     public var fullName: String
@@ -43,7 +40,7 @@ public struct ADUserRecord: NoMADUserRecord, Equatable {
     public var domain: String
     public var cn: String
     public var customAttributes: [String:Any]?
-    
+
     public static func ==(lhs: ADUserRecord, rhs: ADUserRecord) -> Bool {
         return (lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName)
     }

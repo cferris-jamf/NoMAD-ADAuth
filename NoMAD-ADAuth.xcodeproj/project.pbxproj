@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01260458223ED15300523109 /* ADUserRecordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01260457223ED15300523109 /* ADUserRecordTests.swift */; };
 		1A10FCC71FAEA7B300D30727 /* NoMAD_ADAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A10FCBD1FAEA7B300D30727 /* NoMAD_ADAuth.framework */; };
 		1A10FCCC1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10FCCB1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift */; };
 		1A10FCCE1FAEA7B300D30727 /* NoMAD_ADAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A10FCC01FAEA7B300D30727 /* NoMAD_ADAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,7 +27,7 @@
 		1AB3EF5F1FB69637002D5F99 /* GSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF351FB68C18002D5F99 /* GSS.framework */; };
 		1AB3EF601FB6963B002D5F99 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF361FB68F37002D5F99 /* libresolv.tbd */; };
 		1AB3EF611FB6963D002D5F99 /* Kerberos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF341FB68BC4002D5F99 /* Kerberos.framework */; };
-		1AB3EF631FB698CC002D5F99 /* ADUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF621FB698CC002D5F99 /* ADUserTests.swift */; };
+		1AB3EF631FB698CC002D5F99 /* ADUserFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF621FB698CC002D5F99 /* ADUserFunctionTests.swift */; };
 		1AB3EF701FB69E0D002D5F99 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF6D1FB69DB1002D5F99 /* Security.framework */; };
 		1AB3EF771FB6A302002D5F99 /* SiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */; };
 		1AB3EF7B1FB6A3AB002D5F99 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF7A1FB6A3AB002D5F99 /* SessionManager.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01260457223ED15300523109 /* ADUserRecordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADUserRecordTests.swift; sourceTree = "<group>"; };
 		1A10FCBD1FAEA7B300D30727 /* NoMAD_ADAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NoMAD_ADAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A10FCC01FAEA7B300D30727 /* NoMAD_ADAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMAD_ADAuth.h; sourceTree = "<group>"; };
 		1A10FCC11FAEA7B300D30727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,7 +71,7 @@
 		1AB3EF341FB68BC4002D5F99 /* Kerberos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kerberos.framework; path = System/Library/Frameworks/Kerberos.framework; sourceTree = SDKROOT; };
 		1AB3EF351FB68C18002D5F99 /* GSS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSS.framework; path = System/Library/Frameworks/GSS.framework; sourceTree = SDKROOT; };
 		1AB3EF361FB68F37002D5F99 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		1AB3EF621FB698CC002D5F99 /* ADUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADUserTests.swift; sourceTree = "<group>"; };
+		1AB3EF621FB698CC002D5F99 /* ADUserFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADUserFunctionTests.swift; sourceTree = "<group>"; };
 		1AB3EF691FB69B09002D5F99 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		1AB3EF6D1FB69DB1002D5F99 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteManager.swift; sourceTree = "<group>"; };
@@ -140,9 +142,10 @@
 		1A10FCCA1FAEA7B300D30727 /* NoMAD-ADAuthTests */ = {
 			isa = PBXGroup;
 			children = (
+				01260457223ED15300523109 /* ADUserRecordTests.swift */,
 				9C00CCFD1FD5B8E900B5B36A /* SessionManagerTests.swift */,
 				1A10FCCB1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift */,
-				1AB3EF621FB698CC002D5F99 /* ADUserTests.swift */,
+				1AB3EF621FB698CC002D5F99 /* ADUserFunctionTests.swift */,
 				1A10FCCD1FAEA7B300D30727 /* Info.plist */,
 			);
 			path = "NoMAD-ADAuthTests";
@@ -345,7 +348,8 @@
 			files = (
 				1A10FCCC1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift in Sources */,
 				9C00CCFE1FD5B8E900B5B36A /* SessionManagerTests.swift in Sources */,
-				1AB3EF631FB698CC002D5F99 /* ADUserTests.swift in Sources */,
+				1AB3EF631FB698CC002D5F99 /* ADUserFunctionTests.swift in Sources */,
+				01260458223ED15300523109 /* ADUserRecordTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

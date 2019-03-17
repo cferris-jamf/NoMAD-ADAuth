@@ -52,7 +52,7 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "ADUserTests">
+                  Identifier = "ADUserFunctionTests">
                </Test>
             </SkippedTests>
          </TestableReference>
