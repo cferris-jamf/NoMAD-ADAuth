@@ -30,7 +30,6 @@
 		1AB3EF701FB69E0D002D5F99 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3EF6D1FB69DB1002D5F99 /* Security.framework */; };
 		1AB3EF771FB6A302002D5F99 /* SiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */; };
 		1AB3EF7B1FB6A3AB002D5F99 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF7A1FB6A3AB002D5F99 /* SessionManager.swift */; };
-		1AB3EF7D1FB6A476002D5F99 /* ExpirationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EF7C1FB6A476002D5F99 /* ExpirationManager.swift */; };
 		9C00CCFE1FD5B8E900B5B36A /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00CCFD1FD5B8E900B5B36A /* SessionManagerTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,13 +70,10 @@
 		1AB3EF351FB68C18002D5F99 /* GSS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSS.framework; path = System/Library/Frameworks/GSS.framework; sourceTree = SDKROOT; };
 		1AB3EF361FB68F37002D5F99 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		1AB3EF621FB698CC002D5F99 /* ADUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADUserTests.swift; sourceTree = "<group>"; };
-		1AB3EF651FB69A84002D5F99 /* WindowsCATools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsCATools.swift; sourceTree = "<group>"; };
-		1AB3EF661FB69A87002D5F99 /* CSRGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSRGen.swift; sourceTree = "<group>"; };
 		1AB3EF691FB69B09002D5F99 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		1AB3EF6D1FB69DB1002D5F99 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteManager.swift; sourceTree = "<group>"; };
 		1AB3EF7A1FB6A3AB002D5F99 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		1AB3EF7C1FB6A476002D5F99 /* ExpirationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationManager.swift; sourceTree = "<group>"; };
 		9C00CCFD1FD5B8E900B5B36A /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				1AB3EF711FB6A08B002D5F99 /* Managers */,
-				1AB3EF641FB69A73002D5F99 /* CSR */,
 				1AB3EF081FB68922002D5F99 /* NoMADSession.swift */,
 				1AB3EF011FB688D8002D5F99 /* DNS */,
 				1AB3EEF61FB688AD002D5F99 /* Kerberos */,
@@ -205,21 +200,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1AB3EF641FB69A73002D5F99 /* CSR */ = {
-			isa = PBXGroup;
-			children = (
-				1AB3EF661FB69A87002D5F99 /* CSRGen.swift */,
-				1AB3EF651FB69A84002D5F99 /* WindowsCATools.swift */,
-			);
-			name = CSR;
-			sourceTree = "<group>";
-		};
 		1AB3EF711FB6A08B002D5F99 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */,
 				1AB3EF7A1FB6A3AB002D5F99 /* SessionManager.swift */,
-				1AB3EF7C1FB6A476002D5F99 /* ExpirationManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -347,7 +332,6 @@
 				1AB3EEF31FB688A6002D5F99 /* Extensions.swift in Sources */,
 				1AB3EF7B1FB6A3AB002D5F99 /* SessionManager.swift in Sources */,
 				1AB3EF051FB688E6002D5F99 /* DNSResolver.m in Sources */,
-				1AB3EF7D1FB6A476002D5F99 /* ExpirationManager.swift in Sources */,
 				1AB3EEFE1FB688CB002D5F99 /* KerbUtil.m in Sources */,
 				1AB3EF091FB68922002D5F99 /* NoMADSession.swift in Sources */,
 				1AB3EEFD1FB688CB002D5F99 /* KlistUtil.swift in Sources */,
