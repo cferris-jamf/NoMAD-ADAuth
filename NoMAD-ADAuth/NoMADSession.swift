@@ -577,7 +577,7 @@ public class NoMADSession : NSObject {
             if ( passwordExpirationLength.count > 15 ) {
                 passwordAging = false
             } else if ( passwordExpirationLength != "" ) && userPasswordUACFlag != "" {
-                if ~~( Int(userPasswordUACFlag)! & 0x10000 ) {
+                if ( Int(userPasswordUACFlag)! & 0x10000 ) > 0 {
                     passwordAging = false
                 } else {
                     serverPasswordExpirationDefault = Double(abs(Int(passwordExpirationLength)!)/10000000)
@@ -705,7 +705,7 @@ public class NoMADSession : NSObject {
         for var i in 0..<ldifLines.count {
             // save current lineIndex
             let lineIndex = i
-            ldifLines[lineIndex] = ldifLines[lineIndex].trim()
+            ldifLines[lineIndex] = ldifLines[lineIndex].trimWhitespace()
             
             // skip version
             if i == 0 && ldifLines[lineIndex].hasPrefix("version") {
@@ -716,7 +716,7 @@ public class NoMADSession : NSObject {
                 // fold lines
                 
                 while i+1 < ldifLines.count && ldifLines[i+1].hasPrefix(" ") {
-                    ldifLines[lineIndex] += ldifLines[i+1].trim()
+                    ldifLines[lineIndex] += ldifLines[i+1].trimWhitespace()
                     i += 1
                 }
             } else {
@@ -737,7 +737,7 @@ public class NoMADSession : NSObject {
                 
                 // Get the attribute name (before ;),
                 // then add to attributes array if it doesn't exist.
-                var attributeName = attribute[0].trim()
+                var attributeName = attribute[0].trimWhitespace()
                 if let index = attributeName.index(of: ";") {
                     attributeName = String(attributeName[..<index])
                 }
@@ -747,14 +747,14 @@ public class NoMADSession : NSObject {
                 
                 // Get the attribute value.
                 // Check if it is a URL (<), or base64 string (:)
-                var attributeValue = attribute[1].trim()
+                var attributeValue = attribute[1].trimWhitespace()
                 // If
                 if attributeValue.hasPrefix("<") {
                     // url
-                    attributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trim()
+                    attributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimWhitespace()
                 } else if attributeValue.hasPrefix(":") {
                     // base64
-                    let tempAttributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trim()
+                    let tempAttributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimWhitespace()
                     if (Data(base64Encoded: tempAttributeValue, options: NSData.Base64DecodingOptions.init(rawValue: 0)) != nil) {
                         //attributeValue = tempAttributeValue
                         

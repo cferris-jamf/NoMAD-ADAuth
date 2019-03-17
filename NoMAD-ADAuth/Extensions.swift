@@ -8,43 +8,10 @@
 
 import Foundation
 
-// bitwise convenience
-prefix operator ~~
-
-prefix func ~~(value: Int) -> Bool {
-    return (value > 0) ? true : false
-}
-
-extension UserDefaults {
-    func sint(forKey defaultName: String) -> Int? {
-        
-        let defaults = UserDefaults.standard
-        let item = defaults.object(forKey: defaultName)
-        
-        if item == nil {
-            return nil
-        }
-        
-        // test to see if it's an Int
-        
-        if let result = item as? Int {
-            return result
-        } else {
-            // it's a String!
-            
-            return Int(item as! String)
-        }
-    }
-}
-
 extension String {
     
-    func trim() -> String {
+    func trimWhitespace() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
-    }
-    
-    func containsIgnoringCase(_ find: String) -> Bool {
-        return self.range(of: find, options: NSString.CompareOptions.caseInsensitive) != nil
     }
     
     /*
