@@ -62,14 +62,14 @@ public struct NoMADLDAPServer {
 // MARK: Start of public class
 
 /// A general purpose class that is the main entrypoint for interactions with Active Directory.
-public class NoMADSession : NSObject {
+public class NoMADSession: NSObject {
     
     // varibles
     
     public var state: NoMADSessionState = .offDomain            // current state of affairs
     weak public var delegate: NoMADUserSessionDelegate?     // delegate
-    public var site: String = ""                            // current AD site
-    public var defaultNamingContext: String = ""            // current default naming context
+    public var site = ""                                     // current AD site
+    public var defaultNamingContext = ""                 // current default naming context
     private var hosts = [NoMADLDAPServer]()                 // list of LDAP servers
     private var resolver = DNSResolver()                    // DNS resolver object
     private var maxSSF = ""                                 // current security level in place for LDAP lookups
@@ -77,36 +77,35 @@ public class NoMADSession : NSObject {
     
     private var current = 0                                 // current LDAP server from hosts
     public var home = ""                                    // current active user home
-    public var ldapServers : [String]?                      // static DCs to use instead of looking up via DNS records
+    public var ldapServers: [String]?                      // static DCs to use instead of looking up via DNS records
     
     
     // Base configuration prefs
     // change these on the object as needed
     
-    public var domain: String = ""                  // current LDAP Domain - can be set with init
-    public var kerberosRealm: String = ""           // Kerberos realm
-    public var createKerbPrefs: Bool = true         // Determines if skeleton Kerb prefs should be set
+    public var domain = ""                  // current LDAP Domain - can be set with init
+    public var kerberosRealm = ""           // Kerberos realm
+    public var createKerbPrefs = true         // Determines if skeleton Kerb prefs should be set
     
-    public var siteIgnore: Bool = false             // ignore site lookup?
-    public var siteForce: Bool = false              // force a site?
-    public var siteForceSite: String = ""           // what site to force
+    public var siteIgnore = false             // ignore site lookup?
+    public var siteForce = false              // force a site?
+    public var siteForceSite = ""           // what site to force
     
     public var ldaptype: LDAPType = .AD             // Type of LDAP server
-    public var port: Int = 389                      // LDAP port typically either 389 or 636
-    public var anonymous: Bool = false              // Anonymous LDAP lookup
-    public var useSSL: Bool = false                 // Toggle SSL
+    public var port = 389                      // LDAP port typically either 389 or 636
+    public var anonymous = false              // Anonymous LDAP lookup
+    public var useSSL = false                 // Toggle SSL
     
-    public var recursiveGroupLookup : Bool = false  // Toggle recursive group lookup
+    public var recursiveGroupLookup = false  // Toggle recursive group lookup
     
     // User
-    
-    public var userPrincipal: String = ""           // Full user principal
-    public var userPrincipalShort: String = ""      // user shortname - necessary for any lookups to happen
-    public var userRecord: ADUserRecord? = nil      // ADUserRecordObject containing all user information
-    public var userPass: String = ""                // for auth
-    public var oldPass: String = ""                 // for password changes
-    public var newPass: String = ""                 // for password changes
-    public var customAttributes : [String]?
+    public var userPrincipal = ""           // Full user principal
+    public var userPrincipalShort = ""      // user shortname - necessary for any lookups to happen
+    public var userRecord: ADUserRecord?    // ADUserRecordObject containing all user information
+    public var userPass = ""                // for auth
+    public var oldPass = ""                 // for password changes
+    public var newPass = ""                 // for password changes
+    public var customAttributes: [String]?
     
     // conv. init with domain and user
     
@@ -894,7 +893,7 @@ public class NoMADSession : NSObject {
     
     private func checkKpasswdServer() -> Bool {
         if hosts.isEmpty {
-        myLogger.logit(.debug, message: "Make sure we have LDAP servers")
+            myLogger.logit(.debug, message: "Make sure we have LDAP servers")
             getHosts(domain)
         }
 
