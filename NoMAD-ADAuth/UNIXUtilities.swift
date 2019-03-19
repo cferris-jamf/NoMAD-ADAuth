@@ -11,7 +11,6 @@ import Foundation
 import SystemConfiguration
 import IOKit
 
-
 /// A simple wrapper around NSTask
 ///
 /// - Parameters:
@@ -23,7 +22,7 @@ public func cliTask(_ command: String, arguments: [String]? = nil, waitForTermin
 
     var commandLaunchPath: String
     var commandPieces: [String]
-    
+
     if arguments == nil {
         // turn the command into an array and get the first element as the launch path
         commandPieces = command.components(separatedBy: " ")
@@ -158,7 +157,6 @@ public func getConsoleUser() -> String {
     return userName
 }
 
-
 /// Finds the serial number of the Mac.
 ///
 /// - Returns: The serial number of the Mac as a `String`.
@@ -205,7 +203,7 @@ private func which(_ command: String) -> String {
 
     let data = whichPipe.fileHandleForReading.readDataToEndOfFile()
     let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
-    
+
     if output == "" {
         NSLog("Binary doesn't exist")
     }

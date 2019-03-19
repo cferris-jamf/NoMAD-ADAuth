@@ -15,7 +15,7 @@ class SessionManagerTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
@@ -30,7 +30,7 @@ class SessionManagerTests: XCTestCase {
     func testSharedInitPerf() {
         // This is an example of a performance test case.
         self.measure {
-            let _ = SessionManager.shared
+            _ = SessionManager.shared
         }
     }
 

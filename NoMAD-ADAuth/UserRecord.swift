@@ -20,7 +20,7 @@ public protocol BasicUserInfo {
 }
 
 public struct ADUserRecord: BasicUserInfo, Equatable {
-    
+
     public let type: LDAPType = .AD
     public var userPrincipal: String
     public var firstName: String
@@ -39,7 +39,7 @@ public struct ADUserRecord: BasicUserInfo, Equatable {
     public var updatedLast: Date
     public var domain: String
     public var cn: String
-    public var customAttributes: [String:Any]?
+    public var customAttributes: [String: Any]?
 
     public static func ==(lhs: ADUserRecord, rhs: ADUserRecord) -> Bool {
         return (lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName)

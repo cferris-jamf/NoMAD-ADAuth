@@ -9,11 +9,11 @@
 import Foundation
 
 extension String {
-    
+
     func trimWhitespace() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
-    
+
     /*
      
      // TODO: move this to UserInfo
@@ -40,7 +40,7 @@ extension String {
      
      }
      */
-    
+
 }
 
 extension TimeInterval {

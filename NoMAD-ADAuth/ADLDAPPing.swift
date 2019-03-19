@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DS_FLAGS : OptionSet {
+struct DS_FLAGS: OptionSet {
     let rawValue: UInt32
     init(rawValue value: UInt32) {
         rawValue = value
@@ -142,13 +142,12 @@ class ADLDAPPing {
         myLogger.logit(.debug, message: "Is Writable: " + flags.contains(.DS_WRITABLE_FLAG).description)
         myLogger.logit(.debug, message: "Is Closest: " + flags.contains(.DS_CLOSEST_FLAG).description)
 
-
         // END
 
         domainGUID = ADLDAPPing.decodeGUID(netlogonData, start: 8)
         // Get forest
         do {
-            (forest, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (forest, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -162,7 +161,7 @@ class ADLDAPPing {
         }
         // Get domain
         do {
-            (domain, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (domain, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -176,7 +175,7 @@ class ADLDAPPing {
         }
         // Get hostname
         do {
-            (hostname, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (hostname, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -190,7 +189,7 @@ class ADLDAPPing {
         }
         // Get netbiosDomain
         do {
-            (netbiosDomain, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (netbiosDomain, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -204,7 +203,7 @@ class ADLDAPPing {
         }
         // Get netbiosHostname
         do {
-            (netbiosHostname, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (netbiosHostname, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -218,7 +217,7 @@ class ADLDAPPing {
         }
         // Get user
         do {
-            (user, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (user, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -232,7 +231,7 @@ class ADLDAPPing {
         }
         // Get the site the DC is in.
         do {
-            (serverSite, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (serverSite, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -246,7 +245,7 @@ class ADLDAPPing {
         }
         // Get the site the client is in.
         do {
-            (clientSite, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen:nil)
+            (clientSite, cursor) = try ADLDAPPing.decodeRFC1035(netlogonData, start: cursor, seen: nil)
         } catch let error {
             switch error {
             case DecodeError.cyclicPointer:
@@ -259,5 +258,5 @@ class ADLDAPPing {
             return nil
         }
     }
-    
+
 }
