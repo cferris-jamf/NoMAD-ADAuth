@@ -458,7 +458,7 @@ public class NoMADSession: NSObject {
         //swapPrincipals(false)
         
         let command = "/usr/bin/ldapsearch"
-        var arguments: [String] = [String]()
+        var arguments = [String]()
         arguments.append("-N")
         if anonymous {
             arguments.append("-x")

@@ -30,11 +30,8 @@ public let klistUtil = KlistUtil()
 
 public class KlistUtil {
     
-    var dateFormatter = DateFormatter()
-    public var tickets = [String:Ticket]()
-    // var tempDict = [String:Ticket]()
-    
-    
+    let dateFormatter = DateFormatter()
+    public lazy var tickets = [String:Ticket]()
     public var defaultPrincipal: String?
     public var defaultExpires: Date?
     

@@ -62,8 +62,8 @@ class ADUserFunctionTests : XCTestCase, NoMADUserSessionDelegate {
 
     func testUserLookup() {
         session.userInfo()
-        print(session.userRecord)
-        print(session.userRecord?.computedExireDate)
+        print(session.userRecord as Any)
+        print(session.userRecord?.computedExireDate as Any)
     }
     
     func testSecondAuth() {

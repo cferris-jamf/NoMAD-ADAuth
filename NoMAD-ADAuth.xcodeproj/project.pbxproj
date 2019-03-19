@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0110477822418C8F00E3F355 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		01260457223ED15300523109 /* ADUserRecordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADUserRecordTests.swift; sourceTree = "<group>"; };
 		1A10FCBD1FAEA7B300D30727 /* NoMAD_ADAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NoMAD_ADAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A10FCC01FAEA7B300D30727 /* NoMAD_ADAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMAD_ADAuth.h; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB3EF0A1FB689A2002D5F99 /* README.md */,
+				0110477822418C8F00E3F355 /* .swiftlint.yml */,
 				1A10FCBF1FAEA7B300D30727 /* NoMAD-ADAuth */,
 				1A10FCCA1FAEA7B300D30727 /* NoMAD-ADAuthTests */,
 				1A10FCBE1FAEA7B300D30727 /* Products */,
@@ -238,6 +240,7 @@
 				1A10FCB91FAEA7B300D30727 /* Frameworks */,
 				1A10FCBA1FAEA7B300D30727 /* Headers */,
 				1A10FCBB1FAEA7B300D30727 /* Resources */,
+				0110477A22418CAF00E3F355 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -322,6 +325,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0110477A22418CAF00E3F355 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A10FCB81FAEA7B300D30727 /* Sources */ = {

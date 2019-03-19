@@ -1,0 +1,23 @@
+opt_in_rules:
+- sorted_first_last
+- strict_fileprivate
+- trailing_closure
+- yoda_condition
+
+disabled_rules:
+- line_length
+- large_tuple
+
+
+# Overriding existing rules
+file_length:
+ignore_comment_only_lines: true
+
+trailing_whitespace:
+ignores_empty_lines: true
+
+# paths to ignore during linting.
+excluded:
+- Pods
+- Tests
+- Carthage

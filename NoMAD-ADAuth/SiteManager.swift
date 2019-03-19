@@ -20,7 +20,7 @@ var updateTimer: Timer? = nil
 // simple class to use as a global site manager
 
 class SiteManager {
-    
+
     // variables
     
     var sites = [String:[NoMADLDAPServer]]()
