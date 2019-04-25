@@ -35,13 +35,13 @@ public enum NoMADSessionState {
 }
 
 public enum NoMADSessionError: Error {
-    case OffDomain
-    case UnAuthenticated
-    case SiteError
-    case StateError
-    case AuthenticationFailure
-    case KerbError
-    case PasswordExpired
+    case offDomain
+    case unAuthenticated
+    case siteError
+    case stateError
+    case authenticationFailure
+    case kerbError
+    case passwordExpired
     case unknownPrincipal
     case wrongRealm
 }
@@ -163,7 +163,7 @@ public class NoMADSession: NSObject {
             myLogger.logit(.debug, message: "records dict ready: " + records.debugDescription)
             for record: Dictionary in records {
                 myLogger.logit(.debug, message: "Adding: \(String(describing: record["target"]))")
-                let host = record["target"] as! String
+                let host = String(describing: record["target"])
                 myLogger.logit(.debug, message: "Created host: " + host)
                 results.append(host)
                 myLogger.logit(.debug, message: "Added host to results: \(String(describing: results))")
@@ -439,7 +439,7 @@ public class NoMADSession: NSObject {
 
         if test {
             guard testSocket(self.currentServer) else {
-                throw NoMADSessionError.StateError
+                throw NoMADSessionError.stateError
             }
         }
 
@@ -486,7 +486,7 @@ public class NoMADSession: NSObject {
         let ldapResult = cliTask(command, arguments: arguments)
 
         if (ldapResult.contains("GSSAPI Error") || ldapResult.contains("Can't contact")) {
-            throw NoMADSessionError.StateError
+            throw NoMADSessionError.stateError
         }
 
         let myResult = cleanLDIF(ldapResult)
@@ -828,7 +828,7 @@ public class NoMADSession: NSObject {
                 if myResult == "" {
                     myResult = i.replacingOccurrences( of: attribute + ": ", with: "")
                 } else {
-                    myResult = myResult + (", " + i.replacingOccurrences( of: attribute + ": ", with: ""))
+                    myResult += (", " + i.replacingOccurrences( of: attribute + ": ", with: ""))
                 }
             }
         }
@@ -1027,16 +1027,16 @@ extension NoMADSession: NoMADUserSession {
             //TODO: Change to actual throws and error handling
             switch kerbError {
             case "Password has expired" :
-                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.PasswordExpired, description: kerbError)
+                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.passwordExpired, description: kerbError)
                 break
             case "Wrong realm" :
                 delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.wrongRealm, description: kerbError)
                 break
             case _ where kerbError.range(of: "unable to reach any KDC in realm") != nil :
-                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.OffDomain, description: kerbError)
+                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.offDomain, description: kerbError)
                 break
             default:
-                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.KerbError, description: kerbError)
+                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.kerbError, description: kerbError)
             }
         } else {
             if authTestOnly {
@@ -1068,7 +1068,7 @@ extension NoMADSession: NoMADUserSession {
         if let error = error {
             // error
             state = .kerbError
-            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.KerbError, description: error)
+            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.kerbError, description: error)
         } else {
             // If the password change worked then we are online. Reauthenticate with new password.
             userPass = newPass
@@ -1092,7 +1092,7 @@ extension NoMADSession: NoMADUserSession {
         if !klistUtil.returnDefaultPrincipal().contains(kerberosRealm) && !anonymous {
 
             // no ticket for realm
-            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.UnAuthenticated, description: "No ticket for Kerberos realm \(kerberosRealm)")
+            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.unAuthenticated, description: "No ticket for Kerberos realm \(kerberosRealm)")
             return
         }
 
@@ -1126,7 +1126,7 @@ extension NoMADSession: NoMADUserSession {
             case .OD: errorMessage = "No Open Directory servers can be reached."
                 //default: errorMessage = "No LDAP servers can be reached."
             }
-            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.OffDomain, description: errorMessage)
+            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.offDomain, description: errorMessage)
             return
         }
 
@@ -1135,7 +1135,7 @@ extension NoMADSession: NoMADUserSession {
             findSite()
             // check for errors
             if state != .success {
-                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.SiteError, description: "Unable to determine correct site.")
+                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.siteError, description: "Unable to determine correct site.")
                 return
             }
         }

@@ -30,13 +30,13 @@ public func cliTask(_ command: String, arguments: [String]? = nil, waitForTermin
         if command.contains("\\") {
 
             // we need to rebuild the string with the right components
-            var x = 0
+            var index = 0
             for line in commandPieces {
                 if line.last == "\\" {
-                    commandPieces[x] = commandPieces[x].replacingOccurrences(of: "\\", with: " ") + commandPieces.remove(at: x+1)
-                    x -= 1
+                    commandPieces[index] = commandPieces[index].replacingOccurrences(of: "\\", with: " ") + commandPieces.remove(at: index+1)
+                    index -= 1
                 }
-                x += 1
+                index += 1
             }
         }
         commandLaunchPath = commandPieces.remove(at: 0)
@@ -99,14 +99,14 @@ public func cliTaskNoTerm(_ command: String) -> String {
     if command.contains("\\") {
 
         // we need to rebuild the string with the right components
-        var x = 0
+        var index = 0
 
         for line in commandPieces {
             if line.last == "\\" {
-                commandPieces[x] = commandPieces[x].replacingOccurrences(of: "\\", with: " ") + commandPieces.remove(at: x+1)
-                x -= 1
+                commandPieces[index] = commandPieces[index].replacingOccurrences(of: "\\", with: " ") + commandPieces.remove(at: index+1)
+                index -= 1
             }
-            x += 1
+            index += 1
         }
     }
 
@@ -163,10 +163,10 @@ public func getConsoleUser() -> String {
 public func getSerial() -> String {
     let platformExpert: io_service_t = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
     let platformSerialNumberKey = kIOPlatformSerialNumberKey
-    let serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert, platformSerialNumberKey as CFString, kCFAllocatorDefault, 0)
-    let serialNumber = serialNumberAsCFString?.takeUnretainedValue() as! String
-    return serialNumber
-
+    guard let serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert, platformSerialNumberKey as CFString, kCFAllocatorDefault, 0) else {
+        return ""
+    }
+    return String(describing: serialNumberAsCFString.takeUnretainedValue())
 }
 
 /// Finds the MAC address of the primary ethernet connection.

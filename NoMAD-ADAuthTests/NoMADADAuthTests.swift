@@ -9,7 +9,7 @@
 import XCTest
 @testable import NoMAD_ADAuth
 
-class NoMAD_ADAuthTests: XCTestCase {
+class NoMADADAuthTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

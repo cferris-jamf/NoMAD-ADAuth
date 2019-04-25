@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		01260458223ED15300523109 /* ADUserRecordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01260457223ED15300523109 /* ADUserRecordTests.swift */; };
 		1A10FCC71FAEA7B300D30727 /* NoMAD_ADAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A10FCBD1FAEA7B300D30727 /* NoMAD_ADAuth.framework */; };
-		1A10FCCC1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10FCCB1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift */; };
+		1A10FCCC1FAEA7B300D30727 /* NoMADADAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10FCCB1FAEA7B300D30727 /* NoMADADAuthTests.swift */; };
 		1A10FCCE1FAEA7B300D30727 /* NoMAD_ADAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A10FCC01FAEA7B300D30727 /* NoMAD_ADAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AB3EEED1FB6887C002D5F99 /* ADLDAPPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EEEC1FB6887C002D5F99 /* ADLDAPPing.swift */; };
 		1AB3EEF31FB688A6002D5F99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB3EEF01FB688A6002D5F99 /* Extensions.swift */; };
@@ -51,7 +51,7 @@
 		1A10FCC01FAEA7B300D30727 /* NoMAD_ADAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMAD_ADAuth.h; sourceTree = "<group>"; };
 		1A10FCC11FAEA7B300D30727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A10FCC61FAEA7B300D30727 /* NoMAD-ADAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NoMAD-ADAuthTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A10FCCB1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMAD_ADAuthTests.swift; sourceTree = "<group>"; };
+		1A10FCCB1FAEA7B300D30727 /* NoMADADAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMADADAuthTests.swift; sourceTree = "<group>"; };
 		1A10FCCD1FAEA7B300D30727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AB3EEEC1FB6887C002D5F99 /* ADLDAPPing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADLDAPPing.swift; sourceTree = "<group>"; };
 		1AB3EEF01FB688A6002D5F99 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 			children = (
 				01260457223ED15300523109 /* ADUserRecordTests.swift */,
 				9C00CCFD1FD5B8E900B5B36A /* SessionManagerTests.swift */,
-				1A10FCCB1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift */,
+				1A10FCCB1FAEA7B300D30727 /* NoMADADAuthTests.swift */,
 				1AB3EF621FB698CC002D5F99 /* ADUserFunctionTests.swift */,
 				1A10FCCD1FAEA7B300D30727 /* Info.plist */,
 			);
@@ -342,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "#if which swiftlint >/dev/null; then\n#swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -369,7 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A10FCCC1FAEA7B300D30727 /* NoMAD_ADAuthTests.swift in Sources */,
+				1A10FCCC1FAEA7B300D30727 /* NoMADADAuthTests.swift in Sources */,
 				9C00CCFE1FD5B8E900B5B36A /* SessionManagerTests.swift in Sources */,
 				1AB3EF631FB698CC002D5F99 /* ADUserFunctionTests.swift in Sources */,
 				01260458223ED15300523109 /* ADUserRecordTests.swift in Sources */,

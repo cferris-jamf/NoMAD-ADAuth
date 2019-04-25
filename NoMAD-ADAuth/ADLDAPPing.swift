@@ -92,9 +92,9 @@ class ADLDAPPing {
                 cursor += 1
                 // we would appear to have a pointer, let's remember it
                 var ptr: UInt16 = 0
-                let d: [UInt8]  = [byte, (tag & ~marker)]
+                let data: [UInt8]  = [byte, (tag & ~marker)]
                 //				ptr += UnsafePointer<UInt16>(d).pointee
-                ptr += UnsafePointer(d).withMemoryRebound(to: UInt16.self,
+                ptr += UnsafePointer(data).withMemoryRebound(to: UInt16.self,
                                                           capacity: 1) {
                                                             $0.pointee
                 }
@@ -110,10 +110,10 @@ class ADLDAPPing {
                 throw DecodeError.illegalTag
             } else {
                 // read 'tag'-many bytes
-                var s: [UInt8] = [UInt8](repeating: 0, count: Int(tag))
-                (buffer as NSData).getBytes(&s, range: NSRange(location: Int(cursor), length: Int(tag)))
+                var stringBytes: [UInt8] = [UInt8](repeating: 0, count: Int(tag))
+                (buffer as NSData).getBytes(&stringBytes, range: NSRange(location: Int(cursor), length: Int(tag)))
                 cursor += UInt16(tag)
-                result.append(NSString(bytes: s, length: Int(tag), encoding: String.Encoding.utf8.rawValue)! as String)
+                result.append(NSString(bytes: stringBytes, length: Int(tag), encoding: String.Encoding.utf8.rawValue)! as String)
             }
         }
         let final = result.joined(separator: ".")

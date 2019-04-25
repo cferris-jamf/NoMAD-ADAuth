@@ -94,7 +94,7 @@ public class KlistUtil {
 
         var cursor: krb5_cccol_cursor?
         var ret: krb5_error_code?
-        var min_stat = OM_uint32()
+        var minStat = OM_uint32()
 
         ret = krb5_cccol_cursor_new(context, &cursor)
 
@@ -118,7 +118,7 @@ public class KlistUtil {
         // now move to GSS APIs to get expiration times
         // TODO: move this all to GSS APIs when the GSS API functionality is there
 
-        gss_iter_creds(&min_stat, 0, nil, { _, cred in
+        gss_iter_creds(&minStat, 0, nil, { _, cred in
 
             _ = OM_uint32()
             _ = gss_buffer_desc()
@@ -189,7 +189,7 @@ public class KlistUtil {
     public func kswitch(princ: String = "" ) {
 
         var name = ""
-        var p: krb5_principal?
+        var kerbPrinc: krb5_principal?
         var cache: krb5_ccache?
 
         if princ == "" {
@@ -206,8 +206,8 @@ public class KlistUtil {
         var context: krb5_context?
         krb5_init_secure_context(&context)
 
-        krb5_parse_name(context!, &nameInt!, &p)
-        krb5_cc_cache_match(context, p, &cache)
+        krb5_parse_name(context!, &nameInt!, &kerbPrinc)
+        krb5_cc_cache_match(context, kerbPrinc, &cache)
         // krb5_cc_set_default_name
     }
 }
