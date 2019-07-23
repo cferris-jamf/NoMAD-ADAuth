@@ -39,8 +39,10 @@ public struct ADUserRecord: BasicUserInfo, Equatable {
     public var updatedLast: Date
     public var domain: String
     public var cn: String
-    public var customAttributes: [String: Any]?
-
+    public var pso: String?
+    public var passwordLength: Int?
+    public var customAttributes: [String:Any]?
+    
     public static func ==(lhs: ADUserRecord, rhs: ADUserRecord) -> Bool {
         return (lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName)
     }
