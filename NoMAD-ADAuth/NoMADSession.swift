@@ -702,7 +702,7 @@ public class NoMADSession: NSObject {
         for var i in 0..<ldifLines.count {
             // save current lineIndex
             let lineIndex = i
-            ldifLines[lineIndex] = ldifLines[lineIndex].trimWhitespace()
+            ldifLines[lineIndex] = ldifLines[lineIndex].trimmingWhitespace()
 
             // skip version
             if i == 0 && ldifLines[lineIndex].hasPrefix("version") {
@@ -713,7 +713,7 @@ public class NoMADSession: NSObject {
                 // fold lines
 
                 while i+1 < ldifLines.count && ldifLines[i+1].hasPrefix(" ") {
-                    ldifLines[lineIndex] += ldifLines[i+1].trimWhitespace()
+                    ldifLines[lineIndex] += ldifLines[i+1].trimmingWhitespace()
                     i += 1
                 }
             } else {
@@ -734,7 +734,7 @@ public class NoMADSession: NSObject {
 
                 // Get the attribute name (before ;),
                 // then add to attributes array if it doesn't exist.
-                var attributeName = attribute[0].trim()
+                var attributeName = attribute[0].trimmingWhitespace()
                 if let index = attributeName.firstIndex(of: ";") {
                     attributeName = String(attributeName[..<index])
                 }
@@ -744,14 +744,14 @@ public class NoMADSession: NSObject {
 
                 // Get the attribute value.
                 // Check if it is a URL (<), or base64 string (:)
-                var attributeValue = attribute[1].trimWhitespace()
+                var attributeValue = attribute[1].trimmingWhitespace()
                 // If
                 if attributeValue.hasPrefix("<") {
                     // url
-                    attributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimWhitespace()
+                    attributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimmingWhitespace()
                 } else if attributeValue.hasPrefix(":") {
                     // base64
-                    let tempAttributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimWhitespace()
+                    let tempAttributeValue = attributeValue.substring(from: attributeValue.index(after: attributeValue.startIndex)).trimmingWhitespace()
                     if (Data(base64Encoded: tempAttributeValue, options: NSData.Base64DecodingOptions.init(rawValue: 0)) != nil) {
                         //attributeValue = tempAttributeValue
 
