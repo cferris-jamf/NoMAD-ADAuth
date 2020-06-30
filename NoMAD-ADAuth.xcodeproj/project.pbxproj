@@ -78,6 +78,7 @@
 		1AB3EF761FB6A2FE002D5F99 /* SiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteManager.swift; sourceTree = "<group>"; };
 		1AB3EF7A1FB6A3AB002D5F99 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		1AB3EF7C1FB6A476002D5F99 /* ExpirationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationManager.swift; sourceTree = "<group>"; };
+		5BA6B14824AACA2400EE3D93 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		9C00CCFD1FD5B8E900B5B36A /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +108,7 @@
 		1A10FCB31FAEA7B200D30727 = {
 			isa = PBXGroup;
 			children = (
+				5BA6B14824AACA2400EE3D93 /* Package.swift */,
 				1AB3EF0A1FB689A2002D5F99 /* README.md */,
 				1A10FCBF1FAEA7B300D30727 /* NoMAD-ADAuth */,
 				1A10FCCA1FAEA7B300D30727 /* NoMAD-ADAuthTests */,
@@ -285,7 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Orchard & Grove Inc.";
 				TargetAttributes = {
 					1A10FCBC1FAEA7B300D30727 = {
@@ -306,6 +308,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 1A10FCB31FAEA7B200D30727;
 			productRefGroup = 1A10FCBE1FAEA7B300D30727 /* Products */;
@@ -401,6 +404,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -435,7 +439,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -466,6 +470,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -492,7 +497,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
