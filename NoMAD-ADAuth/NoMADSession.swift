@@ -138,7 +138,7 @@ public class NoMADSession : NSObject {
     
     // Return the current server
     
-    var currentServer: String {
+    public var currentServer: String {
         myLogger.logit(.debug, message: "Computed currentServer accessed in state: \(String(describing: state))")
 
         if state != .offDomain {
@@ -856,7 +856,7 @@ public class NoMADSession : NSObject {
     // private function to test for an LDAP defaultNamingContext from the LDAP server
     // this tests for LDAP connectivity and gets the default naming context at the same time
     
-    fileprivate func testLDAP ( _ host: String ) -> Bool {
+    public func testLDAP (_ host: String ) -> Bool {
         
         var attribute = "defaultNamingContext"
         
