@@ -13,8 +13,10 @@ public protocol NoMADUserSession {
     func authenticate(authTestOnly: Bool)
     func changePassword()
     func userInfo()
+    func testLDAP(host: String) -> Bool
     var delegate: NoMADUserSessionDelegate? { get set }
     var state: NoMADSessionState { get }
+    var currentServer: String { get }
 }
 
 public protocol NoMADUserSessionDelegate: class {
