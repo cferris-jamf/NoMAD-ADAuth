@@ -156,8 +156,10 @@ public class NoMADSession : NSObject {
                 getHosts(domain)
             }
             myLogger.logit(.debug, message: "Lookup the current LDAP host in: \(String(describing: hosts))")
-
-            return hosts[current].host
+            guard hosts.count > current else {
+                return ""
+            }
+            return hosts[safe: current]?.host ?? ""
         } else {
             return ""
         }
