@@ -149,8 +149,4 @@ public class SessionManager: NoMADUserSessionDelegate {
             sessions[user.userPrincipal]?.aging = false
         }
     }
-
-    public func NoMADStateDidChange(state: NoMADSessionState) {
-        // just protocol conformance
-    }
 }

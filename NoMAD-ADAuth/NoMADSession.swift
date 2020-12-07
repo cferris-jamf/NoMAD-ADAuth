@@ -23,7 +23,6 @@ public protocol NoMADUserSessionDelegate: class {
     func NoMADAuthenticationSucceded()
     func NoMADAuthenticationFailed(error: NoMADSessionError, description: String)
     func NoMADUserInformation(user: ADUserRecord)
-    func NoMADStateDidChange(state: NoMADSessionState)
 }
 
 public enum NoMADSessionState {
@@ -70,11 +69,7 @@ public class NoMADSession : NSObject {
     // varibles
 
     // current state of affairs
-    public var state: NoMADSessionState = .offDomain {
-        didSet {
-            delegate?.NoMADStateDidChange(state: state)
-        }
-    }
+    public var state: NoMADSessionState = .offDomain
     weak public var delegate: NoMADUserSessionDelegate?     // delegate
     public var site: String = ""                            // current AD site
     public var defaultNamingContext: String = ""            // current default naming context
