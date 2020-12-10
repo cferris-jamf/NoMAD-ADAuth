@@ -307,9 +307,11 @@ public class NoMADSession : NSObject {
                     
                     // socket test first - this could be falsely negative
                     // also note that this needs to return stderr
-                    
+
+                    myLogger.logit(.base, message: "\n Punk thats not dead will perform cli task. Date: \(Date()) \n")
                     let mySocketResult = cliTask("/usr/bin/nc -G 5 -z " + hosts[i].host + " " + String(port))
-                    
+                    myLogger.logit(.base, message: "\n Punk thats not dead finished cli task. Date: \(Date()) \n")
+
                     if mySocketResult.contains("succeeded!") {
                         
                         var attribute = "defaultNamingContext"
