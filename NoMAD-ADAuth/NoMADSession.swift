@@ -293,7 +293,7 @@ public class NoMADSession : NSObject {
         parseHostsReply()
     }
     
-    fileprivate func testHosts() {
+    @discardableResult public func testHosts() -> Bool {
         if state == .success {
             for i in 0...( hosts.count - 1) {
                 if hosts[i].status != "dead" {
@@ -356,13 +356,15 @@ public class NoMADSession : NSObject {
         }
         
         guard ( hosts.count > 0 ) else {
-            return
+            return false
         }
         
         if hosts.last!.status == "dead" {
             myLogger.logit(.base, message: "All DCs in are dead! You should really fix this.")
             state = .offDomain
+            return false
         } else {
+            return true
             state = .success
         }
     }
