@@ -294,9 +294,15 @@ public class NoMADSession : NSObject {
     }
     
     @discardableResult public func testHosts() -> Bool {
+        myLogger.logit(.base, message: "\n starting testHosts \n")
+
         if state == .success {
+            myLogger.logit(.base, message: "\n state success, going into loop. count: \(hosts.count) \n")
+
             for i in 0...( hosts.count - 1) {
+                myLogger.logit(.base, message: "\n testing \(i) \n")
                 if hosts[i].status != "dead" {
+                    myLogger.logit(.base, message: "\n \(i) punks not dead  \n")
                     myLogger.logit(.info, message:"Trying host: " + hosts[i].host)
                     
                     // socket test first - this could be falsely negative
@@ -353,9 +359,12 @@ public class NoMADSession : NSObject {
                     }
                 }
             }
+        } else {
+            myLogger.logit(.base, message: "\n status not success but \(state) \n")
         }
         
         guard ( hosts.count > 0 ) else {
+            myLogger.logit(.base, message: "\n no hosts \n")
             return false
         }
         
@@ -365,6 +374,7 @@ public class NoMADSession : NSObject {
             return false
         } else {
             return true
+            myLogger.logit(.base, message: "\n on domain! \n")
             state = .success
         }
     }
