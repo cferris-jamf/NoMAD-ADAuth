@@ -328,9 +328,11 @@ public class NoMADSession : NSObject {
                         if anonymous {
                             myLogger.logit(.base, message: "\n Anonymus will perform cli task. Date: \(Date()) \n")
                             myLDAPResult = cliTask("/usr/bin/ldapsearch -N -LLL -x " + maxSSF + "-l 3 -s base -H " + URIPrefix + hosts[i].host + " " + String(port) + " " + attribute)
+                            myLogger.logit(.base, message: "\n Anonymus cli task finishied. Date: \(Date()) \n")
                         } else {
                             myLogger.logit(.base, message: "\n Not Anonymus will perform cli task. Date: \(Date()) \n")
                             myLDAPResult = cliTask("/usr/bin/ldapsearch -N -LLL -Q " + maxSSF + "-l 3 -s base -H " + URIPrefix + hosts[i].host + " " + String(port) + " " + attribute)
+                            myLogger.logit(.base, message: "\n Not Anonymus cli task finishied. Date: \(Date()) \n")
                         }
                         
                         // TODO: THINK ABOUT THIS
