@@ -180,7 +180,7 @@ public class NoMADSession : NSObject {
         }
     }
 
-    func getSRVRecords(_ domain: String, srv_type: String="_ldap._tcp.") -> [String] {
+    public func getSRVRecords(_ domain: String, srv_type: String="_ldap._tcp.") -> [String] {
         self.resolver.queryType = "SRV"
         
         self.resolver.queryValue = srv_type + domain
