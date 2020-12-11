@@ -1346,4 +1346,75 @@ extension NoMADSession: NoMADUserSession {
             delegate?.NoMADUserInformation(user: userRecord!)
         }
     }
+
+    public func userInfoAsynchronous() {
+        // set state to offDomain on start
+        state = .offDomain
+
+        // check for valid ticket
+        klistUtil.klist()
+        if !klistUtil.returnDefaultPrincipal().contains(kerberosRealm) && !anonymous {
+
+            // no ticket for realm
+            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.UnAuthenticated, description: "No ticket for Kerberos realm \(kerberosRealm)")
+            return
+        }
+
+        // now some setup
+        if useSSL {
+            URIPrefix = "ldaps://"
+            port = 636
+            maxSSF = "-O maxssf=0 "
+        }
+
+        var lookupSite = true
+
+        // check for connectivity and site
+        if let server = siteManager.sites[domain] {
+            // we have an existing server, let's use it
+            lookupSite = false
+            hosts = server
+        }
+
+        if lookupSite {
+            getHosts(domain)
+        } else {
+            state = .success
+        }
+
+        // if no LDAP servers, we're off the domain so bail
+        if hosts.count == 0 {
+            var errorMessage = "No LDAP servers can be reached."
+            switch ldaptype {
+            case .AD: errorMessage = "No AD Domain Controllers can be reached."
+            case .OD: errorMessage = "No Open Directory servers can be reached."
+                //default: errorMessage = "No LDAP servers can be reached."
+            }
+            delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.OffDomain, description: errorMessage)
+            return
+        }
+
+        // Now for the LDAP Ping to find the correct site
+        if ldaptype == .AD && lookupSite  {
+            findSite()
+            // check for errors
+            if state != .success {
+                delegate?.NoMADAuthenticationFailed(error: NoMADSessionError.SiteError, description: "Unable to determine correct site.")
+                return
+            }
+        }
+
+        testHosts { _ in
+            if lookupSite {
+                // write found server back to site manager
+                siteManager.sites[self.domain] = self.hosts
+            }
+
+            self.getUserInformation()
+            // return the userRecord unless we came back empty
+            if self.userRecord != nil {
+                self.delegate?.NoMADUserInformation(user: self.userRecord!)
+            }
+        }
+    }
 }
