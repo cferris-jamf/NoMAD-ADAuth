@@ -294,24 +294,16 @@ public class NoMADSession : NSObject {
     }
     
     @discardableResult public func testHosts() -> Bool {
-        myLogger.logit(.base, message: "\n starting testHosts \n")
-
-
+        myLogger.logit(.info, message:"Calling testHosts: blocking")
         if state == .success {
-            myLogger.logit(.base, message: "\n state success, going into loop. count: \(hosts.count) \n")
-
             for i in 0...( hosts.count - 1) {
-                myLogger.logit(.base, message: "\n testing \(i) \n")
                 if hosts[i].status != "dead" {
-                    myLogger.logit(.base, message: "\n \(i) punks not dead  \n")
                     myLogger.logit(.info, message:"Trying host: " + hosts[i].host)
                     
                     // socket test first - this could be falsely negative
                     // also note that this needs to return stderr
 
-                    myLogger.logit(.base, message: "\n Punk thats not dead will perform cli task. Date: \(Date()) \n")
                     let mySocketResult = cliTask("/usr/bin/nc -G 5 -z " + hosts[i].host + " " + String(port))
-                    myLogger.logit(.base, message: "\n Punk thats not dead finished cli task. Date: \(Date()) \n")
 
                     if mySocketResult.contains("succeeded!") {
                         
@@ -329,13 +321,9 @@ public class NoMADSession : NSObject {
                         var myLDAPResult = ""
                         
                         if anonymous {
-                            myLogger.logit(.base, message: "\n Anonymus will perform cli task. Date: \(Date()) \n")
                             myLDAPResult = cliTask("/usr/bin/ldapsearch -N -LLL -x " + maxSSF + "-l 3 -s base -H " + URIPrefix + hosts[i].host + " " + String(port) + " " + attribute)
-                            myLogger.logit(.base, message: "\n Anonymus cli task finishied. Date: \(Date()) \n")
                         } else {
-                            myLogger.logit(.base, message: "\n Not Anonymus will perform cli task. Date: \(Date()) \n")
                             myLDAPResult = cliTask("/usr/bin/ldapsearch -N -LLL -Q " + maxSSF + "-l 3 -s base -H " + URIPrefix + hosts[i].host + " " + String(port) + " " + attribute)
-                            myLogger.logit(.base, message: "\n Not Anonymus cli task finishied. Date: \(Date()) \n")
                         }
                         
                         // TODO: THINK ABOUT THIS
@@ -369,7 +357,10 @@ public class NoMADSession : NSObject {
         } else {
             myLogger.logit(.base, message: "\n status not success but \(state) \n")
         }
-        
+
+        myLogger.logit(.info, message:"testHosts (blocking) finished it's blocking part and will return")
+
+
         guard ( hosts.count > 0 ) else {
             myLogger.logit(.base, message: "\n no hosts \n")
             return false
@@ -1405,6 +1396,7 @@ extension NoMADSession: NoMADUserSession {
         }
 
         testHosts { _ in
+            myLogger.logit(.debug, message: "userInfoAsynchronous testHosts completed, calling completion")
             if lookupSite {
                 // write found server back to site manager
                 siteManager.sites[self.domain] = self.hosts
