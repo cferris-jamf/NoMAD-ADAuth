@@ -382,11 +382,13 @@ public class NoMADSession : NSObject {
     public func testHosts(completion: @escaping (Bool) -> Void) {
         myLogger.logit(.base, message: "\n starting testHosts \n")
 
+        let dispatchGroup = DispatchGroup()
 
         if state == .success {
             myLogger.logit(.base, message: "\n state success, going into loop. count: \(hosts.count) \n")
 
             for i in 0...( hosts.count - 1) {
+                dispatchGroup.enter()
                 myLogger.logit(.base, message: "\n testing \(i) \n")
                 if hosts[i].status != "dead" {
                     myLogger.logit(.base, message: "\n \(i) punks not dead  \n")
@@ -400,7 +402,7 @@ public class NoMADSession : NSObject {
                     cliTask(cliTaskString) { result in
                         myLogger.logit(.base, message: "\n Punk thats not dead finished cli task. Date: \(Date()) \n")
                         self.handleSocketResult(result: result, index: i) {
-                            completion(self.assertDomainStatus(assertionHosts: self.hosts))
+                            dispatchGroup.leave()
                         }
                     }
                 }
@@ -408,6 +410,9 @@ public class NoMADSession : NSObject {
         } else {
             myLogger.logit(.base, message: "\n status not success but \(state) \n")
             completion(false)
+        }
+        dispatchGroup.notify(queue: DispatchQueue.global()) {
+            completion(self.assertDomainStatus(assertionHosts: self.hosts))
         }
     }
 
