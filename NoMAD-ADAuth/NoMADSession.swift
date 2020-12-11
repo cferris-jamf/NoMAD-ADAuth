@@ -412,6 +412,7 @@ public class NoMADSession : NSObject {
             completion(false)
         }
         dispatchGroup.notify(queue: DispatchQueue.global()) {
+            myLogger.logit(.base, message: "Notifying that testHost groups dispatchGroup has finished their tasks")
             completion(self.assertDomainStatus(assertionHosts: self.hosts))
         }
     }
