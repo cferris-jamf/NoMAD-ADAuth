@@ -1395,10 +1395,11 @@ extension NoMADSession: NoMADUserSession {
             }
         }
 
-        testHosts { _ in
+        let completion = {
             myLogger.logit(.debug, message: "userInfoAsynchronous testHosts completed, calling completion")
             if lookupSite {
                 // write found server back to site manager
+                let ajj = siteManager.sites[self.domain]
                 siteManager.sites[self.domain] = self.hosts
             }
 
@@ -1406,6 +1407,12 @@ extension NoMADSession: NoMADUserSession {
             // return the userRecord unless we came back empty
             if self.userRecord != nil {
                 self.delegate?.NoMADUserInformation(user: self.userRecord!)
+            }
+        }
+
+        testHosts { _ in
+            DispatchQueue.main.async {
+                completion()
             }
         }
     }
