@@ -382,6 +382,7 @@ public class NoMADSession : NSObject {
     public func testHosts(completion: @escaping (Bool) -> Void) {
         myLogger.logit(.base, message: "\n starting testHosts \n")
 
+        let callId = arc4random()
         let dispatchGroup = DispatchGroup()
 
         if state == .success {
@@ -412,7 +413,7 @@ public class NoMADSession : NSObject {
             completion(false)
         }
         dispatchGroup.notify(queue: DispatchQueue.global()) {
-            myLogger.logit(.base, message: "Notifying that testHost groups dispatchGroup has finished their tasks")
+            myLogger.logit(.base, message: "Notifying that testHost groups dispatchGroup has finished their tasks. CallID: \(callId)")
             completion(self.assertDomainStatus(assertionHosts: self.hosts))
         }
     }
