@@ -17,7 +17,7 @@ public protocol NoMADUserSession {
     var state: NoMADSessionState { get }
 }
 
-public protocol NoMADUserSessionDelegate: class {
+public protocol NoMADUserSessionDelegate: AnyObject {
     func NoMADAuthenticationSucceded()
     func NoMADAuthenticationFailed(error: NoMADSessionError, description: String)
     func NoMADUserInformation(user: ADUserRecord)
